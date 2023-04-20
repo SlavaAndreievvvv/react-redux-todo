@@ -1,0 +1,51 @@
+.errorPage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  overflow: hidden;
+  scroll-snap-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e2e2e270;
+}
+
+.errorMessage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.errorMessage h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: red;
+}
+
+.errorMessage p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: red;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #7986cb;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #5c6bc0;
+}

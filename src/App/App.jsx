@@ -1,30 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form } from "../components/Form";
 import styles from "./App.module.css";
 import { TodoList } from "../components/TodoList";
-import { useDispatch } from "react-redux";
-import { addTodo } from "../store/todoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewTodo, fetchTodos } from "../store/todoSlice";
+import { Spinner } from "../components/Spinner/Spinner";
+import { ErrorMessage } from "../components/ErrorMessage/ErrorMessage";
 
 export const App = () => {
-  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
+  const { status, error } = useSelector((state) => state.todos);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
 
   const addTask = (e) => {
     e.preventDefault();
-    if (text.trim().length) {
-      dispatch(addTodo({ text }));
-      setText("");
+    if (title.trim().length) {
+      dispatch(addNewTodo(title));
+      setTitle("");
     }
   };
 
   return (
     <div className={styles.app}>
       <Form
-        value={text}
-        handleInput={setText}
+        value={title}
+        handleInput={setTitle}
         handleSubmit={addTask}
         children="add todo"
       />
+      {status === "loading" && <Spinner />}
+      {error && <ErrorMessage message={error} />}
       <TodoList />
     </div>
   );
