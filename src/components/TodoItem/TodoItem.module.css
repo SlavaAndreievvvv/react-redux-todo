@@ -1,0 +1,62 @@
+.card {
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.checkbox {
+  position: relative;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+}
+.checkbox:checked + .text {
+  text-decoration: line-through;
+}
+
+.text {
+  display: flex;
+  flex-grow: 1;
+  margin-left: 10px;
+  font-size: 20px;
+  color: #333;
+  text-decoration: none;
+}
+.delete {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete::before,
+.delete::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  border-radius: 2px;
+}
+
+.delete::before {
+  transform: rotate(45deg);
+}
+
+.delete::after {
+  transform: rotate(-45deg);
+}
